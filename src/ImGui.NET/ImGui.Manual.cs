@@ -9,7 +9,7 @@ namespace ImGuiNET
     public static unsafe partial class ImGui
     {
         public static bool InputText(
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP2_1_OR_GREATER
+#if ANDROID
             ReadOnlySpan<char> label,
 #else
             string label,
@@ -21,7 +21,7 @@ namespace ImGuiNET
         }
 
         public static bool InputText(
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP2_1_OR_GREATER
+#if ANDROID
             ReadOnlySpan<char> label,
 #else
             string label,
@@ -34,7 +34,7 @@ namespace ImGuiNET
         }
 
         public static bool InputText(
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP2_1_OR_GREATER
+#if ANDROID
             ReadOnlySpan<char> label,
 #else
             string label,
@@ -48,7 +48,7 @@ namespace ImGuiNET
         }
 
         public static bool InputText(
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP2_1_OR_GREATER
+#if ANDROID
             ReadOnlySpan<char> label,
 #else
             string label,
@@ -75,7 +75,7 @@ namespace ImGuiNET
             bool ret;
             fixed (byte* bufPtr = buf)
             {
-                ret = ImGuiNative.igInputText(utf8LabelBytes, bufPtr, buf_size, flags, callback, user_data.ToPointer()) != 0;
+                ret = ImGuiNative.ImGui_InputText(utf8LabelBytes, bufPtr, buf_size, flags, callback, user_data.ToPointer()) != 0;
             }
 
             if (utf8LabelByteCount > Util.StackAllocationSizeLimit)
@@ -87,7 +87,7 @@ namespace ImGuiNET
         }
 
         public static bool InputText(
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP2_1_OR_GREATER
+#if ANDROID
             ReadOnlySpan<char> label,
 #else
             string label,
@@ -96,7 +96,7 @@ namespace ImGuiNET
             uint maxLength) => InputText(label, ref input, maxLength, 0, null, IntPtr.Zero);
 
         public static bool InputText(
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP2_1_OR_GREATER
+#if ANDROID
             ReadOnlySpan<char> label,
 #else
             string label,
@@ -106,7 +106,7 @@ namespace ImGuiNET
             ImGuiInputTextFlags flags) => InputText(label, ref input, maxLength, flags, null, IntPtr.Zero);
 
         public static bool InputText(
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP2_1_OR_GREATER
+#if ANDROID
             ReadOnlySpan<char> label,
 #else
             string label,
@@ -117,7 +117,7 @@ namespace ImGuiNET
             ImGuiInputTextCallback callback) => InputText(label, ref input, maxLength, flags, callback, IntPtr.Zero);
 
         public static bool InputText(
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP2_1_OR_GREATER
+#if ANDROID
             ReadOnlySpan<char> label,
 #else
             string label,
@@ -163,7 +163,7 @@ namespace ImGuiNET
             Unsafe.InitBlockUnaligned(utf8InputBytes + utf8InputByteCount, 0, clearBytesCount);
             Unsafe.CopyBlock(originalUtf8InputBytes, utf8InputBytes, (uint)inputBufSize);
 
-            byte result = ImGuiNative.igInputText(
+            byte result = ImGuiNative.ImGui_InputText(
                 utf8LabelBytes,
                 utf8InputBytes,
                 (uint)inputBufSize,
@@ -189,7 +189,7 @@ namespace ImGuiNET
         }
 
         public static bool InputTextMultiline(
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP2_1_OR_GREATER
+#if ANDROID
             ReadOnlySpan<char> label,
 #else
             string label,
@@ -199,7 +199,7 @@ namespace ImGuiNET
             Vector2 size) => InputTextMultiline(label, ref input, maxLength, size, 0, null, IntPtr.Zero);
 
         public static bool InputTextMultiline(
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP2_1_OR_GREATER
+#if ANDROID
             ReadOnlySpan<char> label,
 #else
             string label,
@@ -210,7 +210,7 @@ namespace ImGuiNET
             ImGuiInputTextFlags flags) => InputTextMultiline(label, ref input, maxLength, size, flags, null, IntPtr.Zero);
 
         public static bool InputTextMultiline(
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP2_1_OR_GREATER
+#if ANDROID
             ReadOnlySpan<char> label,
 #else
             string label,
@@ -222,7 +222,7 @@ namespace ImGuiNET
             ImGuiInputTextCallback callback) => InputTextMultiline(label, ref input, maxLength, size, flags, callback, IntPtr.Zero);
 
         public static bool InputTextMultiline(
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP2_1_OR_GREATER
+#if ANDROID
             ReadOnlySpan<char> label,
 #else
             string label,
@@ -269,7 +269,7 @@ namespace ImGuiNET
             Unsafe.InitBlockUnaligned(utf8InputBytes + utf8InputByteCount, 0, clearBytesCount);
             Unsafe.CopyBlock(originalUtf8InputBytes, utf8InputBytes, (uint)inputBufSize);
 
-            byte result = ImGuiNative.igInputTextMultiline(
+            byte result = ImGuiNative.ImGui_InputTextMultiline(
                 utf8LabelBytes,
                 utf8InputBytes,
                 (uint)inputBufSize,
@@ -296,7 +296,7 @@ namespace ImGuiNET
         }
 
         public static bool InputTextWithHint(
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP2_1_OR_GREATER
+#if ANDROID
             ReadOnlySpan<char> label,
             ReadOnlySpan<char> hint,
 #else
@@ -307,7 +307,7 @@ namespace ImGuiNET
             uint maxLength) => InputTextWithHint(label, hint, ref input, maxLength, 0, null, IntPtr.Zero);
 
         public static bool InputTextWithHint(
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP2_1_OR_GREATER
+#if ANDROID
             ReadOnlySpan<char> label,
             ReadOnlySpan<char> hint,
 #else
@@ -319,7 +319,7 @@ namespace ImGuiNET
             ImGuiInputTextFlags flags) => InputTextWithHint(label, hint, ref input, maxLength, flags, null, IntPtr.Zero);
 
         public static bool InputTextWithHint(
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP2_1_OR_GREATER
+#if ANDROID
             ReadOnlySpan<char> label,
             ReadOnlySpan<char> hint,
 #else
@@ -332,7 +332,7 @@ namespace ImGuiNET
             ImGuiInputTextCallback callback) => InputTextWithHint(label, hint, ref input, maxLength, flags, callback, IntPtr.Zero);
 
         public static bool InputTextWithHint(
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP2_1_OR_GREATER
+#if ANDROID
             ReadOnlySpan<char> label,
             ReadOnlySpan<char> hint,
 #else
@@ -393,7 +393,7 @@ namespace ImGuiNET
             Unsafe.InitBlockUnaligned(utf8InputBytes + utf8InputByteCount, 0, clearBytesCount);
             Unsafe.CopyBlock(originalUtf8InputBytes, utf8InputBytes, (uint)inputBufSize);
 
-            byte result = ImGuiNative.igInputTextWithHint(
+            byte result = ImGuiNative.ImGui_InputTextWithHint(
                 utf8LabelBytes,
                 utf8HintBytes,
                 utf8InputBytes,
@@ -423,7 +423,7 @@ namespace ImGuiNET
             return result != 0;
         }
 
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP2_1_OR_GREATER
+#if ANDROID
         public static Vector2 CalcTextSize(ReadOnlySpan<char> text)
             => CalcTextSizeImpl(text);
 
@@ -492,7 +492,7 @@ namespace ImGuiNET
 #endif
 
         private static Vector2 CalcTextSizeImpl(
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP2_1_OR_GREATER
+#if ANDROID
             ReadOnlySpan<char> text,
 #else
             string text,
@@ -526,7 +526,7 @@ namespace ImGuiNET
                 nativeTextEnd = nativeTextStart + nativeTextOffset;
             }
 
-            ImGuiNative.igCalcTextSize(&ret, nativeTextStart, nativeTextEnd, *((byte*)(&hideTextAfterDoubleHash)), wrapWidth);
+            ImGuiNative.ImGui_CalcTextSize(&ret, nativeTextStart, nativeTextEnd, *((byte*)(&hideTextAfterDoubleHash)), wrapWidth);
             if (textByteCount > Util.StackAllocationSizeLimit)
             {
                 Util.Free(nativeTextStart);
@@ -536,7 +536,7 @@ namespace ImGuiNET
         }
 
         public static bool InputText(
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP2_1_OR_GREATER
+#if ANDROID
             ReadOnlySpan<char> label,
 #else
             string label,
@@ -548,7 +548,7 @@ namespace ImGuiNET
         }
 
         public static bool InputText(
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP2_1_OR_GREATER
+#if ANDROID
             ReadOnlySpan<char> label,
 #else
             string label,
@@ -561,7 +561,7 @@ namespace ImGuiNET
         }
 
         public static bool InputText(
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP2_1_OR_GREATER
+#if ANDROID
             ReadOnlySpan<char> label,
 #else
             string label,
@@ -575,7 +575,7 @@ namespace ImGuiNET
         }
 
         public static bool InputText(
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP2_1_OR_GREATER
+#if ANDROID
             ReadOnlySpan<char> label,
 #else
             string label,
@@ -599,7 +599,7 @@ namespace ImGuiNET
             }
             Util.GetUtf8(label, utf8LabelBytes, utf8LabelByteCount);
 
-            bool ret = ImGuiNative.igInputText(utf8LabelBytes, (byte*)buf.ToPointer(), buf_size, flags, callback, user_data.ToPointer()) != 0;
+            bool ret = ImGuiNative.ImGui_InputText(utf8LabelBytes, (byte*)buf.ToPointer(), buf_size, flags, callback, user_data.ToPointer()) != 0;
 
             if (utf8LabelByteCount > Util.StackAllocationSizeLimit)
             {
@@ -609,7 +609,7 @@ namespace ImGuiNET
             return ret;
         }
 
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP2_1_OR_GREATER
+#if ANDROID
         public static bool Begin(ReadOnlySpan<char> name, ImGuiWindowFlags flags)
 #else
         public static bool Begin(string name, ImGuiWindowFlags flags)
@@ -629,7 +629,7 @@ namespace ImGuiNET
             Util.GetUtf8(name, utf8NameBytes, utf8NameByteCount);
 
             byte* p_open = null;
-            byte ret = ImGuiNative.igBegin(utf8NameBytes, p_open, flags);
+            byte ret = ImGuiNative.ImGui_Begin(utf8NameBytes, p_open, flags);
 
             if (utf8NameByteCount > Util.StackAllocationSizeLimit)
             {
@@ -639,7 +639,7 @@ namespace ImGuiNET
             return ret != 0;
         }
 
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP2_1_OR_GREATER
+#if ANDROID
         public static bool MenuItem(ReadOnlySpan<char> label, bool enabled)
 #else
         public static bool MenuItem(string label, bool enabled)

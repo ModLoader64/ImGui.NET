@@ -27,7 +27,7 @@ namespace ImGuiNET
             ushort* native_ranges = (ushort*)ranges.ToPointer();
             ImGuiNative.ImFontGlyphRangesBuilder_AddRanges((ImFontGlyphRangesBuilder*)(NativePtr), native_ranges);
         }
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP2_1_OR_GREATER
+#if ANDROID
         public void AddText(ReadOnlySpan<char> text)
 #else
         public void AddText(string text)

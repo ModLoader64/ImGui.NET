@@ -58,7 +58,7 @@ namespace ImGuiNET
             }
             return ret != 0;
         }
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP2_1_OR_GREATER
+#if ANDROID
         public bool Draw(ReadOnlySpan<char> label)
 #else
         public bool Draw(string label)
@@ -90,7 +90,7 @@ namespace ImGuiNET
             }
             return ret != 0;
         }
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP2_1_OR_GREATER
+#if ANDROID
         public bool Draw(ReadOnlySpan<char> label, float width)
 #else
         public bool Draw(string label, float width)
@@ -126,7 +126,7 @@ namespace ImGuiNET
             byte ret = ImGuiNative.ImGuiTextFilter_IsActive((ImGuiTextFilter*)(NativePtr));
             return ret != 0;
         }
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP2_1_OR_GREATER
+#if ANDROID
         public bool PassFilter(ReadOnlySpan<char> text)
 #else
         public bool PassFilter(string text)

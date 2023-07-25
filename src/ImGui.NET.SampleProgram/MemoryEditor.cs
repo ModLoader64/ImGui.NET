@@ -66,11 +66,11 @@ namespace ImGuiNET
                 return;
             }
 
-            float line_height = ImGuiNative.igGetTextLineHeight();
+            float line_height = ImGuiNative.ImGui_GetTextLineHeight();
             int line_total_count = (mem_size + Rows - 1) / Rows;
 
-            ImGuiNative.igSetNextWindowContentSize(new Vector2(0.0f, line_total_count * line_height));
-            ImGui.BeginChild("##scrolling", new Vector2(0, -ImGuiNative.igGetFrameHeightWithSpacing()), false, 0);
+            ImGuiNative.ImGui_SetNextWindowContentSize(new Vector2(0.0f, line_total_count * line_height));
+            ImGui.BeginChild("##scrolling", new Vector2(0, -ImGuiNative.ImGui_GetFrameHeightWithSpacing()), false, 0);
 
             ImGui.PushStyleVar(ImGuiStyleVar.FramePadding, new Vector2(0, 0));
             ImGui.PushStyleVar(ImGuiStyleVar.ItemSpacing, new Vector2(0, 0));
@@ -106,7 +106,7 @@ namespace ImGuiNET
                 float scroll_offset = ((DataEditingAddr / Rows) - (data_editing_addr_backup / Rows)) * line_height;
                 bool scroll_desired = (scroll_offset < 0.0f && DataEditingAddr < visible_start_addr + Rows * 2) || (scroll_offset > 0.0f && DataEditingAddr > visible_end_addr - Rows * 2);
                 if (scroll_desired)
-                    ImGuiNative.igSetScrollY_Float(ImGuiNative.igGetScrollY() + scroll_offset);
+                    ImGuiNative.ImGui_SetScrollY_Float(ImGuiNative.ImGui_GetScrollY() + scroll_offset);
             }
 
             for (int line_i = clipper.DisplayStart; line_i < clipper.DisplayEnd; line_i++) // display only visible items
@@ -116,7 +116,7 @@ namespace ImGuiNET
                 ImGui.SameLine();
 
                 // Draw Hexadecimal
-                float line_start_x = ImGuiNative.igGetCursorPosX();
+                float line_start_x = ImGuiNative.ImGui_GetCursorPosX();
                 for (int n = 0; n < Rows && addr < mem_size; n++, addr++)
                 {
                     ImGui.SameLine(line_start_x + cell_width * n);
@@ -202,7 +202,7 @@ namespace ImGuiNET
 
             ImGui.Separator();
 
-            ImGuiNative.igAlignTextToFramePadding();
+            ImGuiNative.ImGui_AlignTextToFramePadding();
             ImGui.PushItemWidth(50);
             ImGui.PushAllowKeyboardFocus(true);
             int rows_backup = Rows;
@@ -229,7 +229,7 @@ namespace ImGuiNET
                     if (goto_addr >= 0 && goto_addr < mem_size)
                     {
                         ImGui.BeginChild("##scrolling");
-                        ImGui.SetScrollFromPosY(ImGui.GetCursorStartPos().Y + (goto_addr / Rows) * ImGuiNative.igGetTextLineHeight());
+                        ImGui.SetScrollFromPosY(ImGui.GetCursorStartPos().Y + (goto_addr / Rows) * ImGuiNative.ImGui_GetTextLineHeight());
                         ImGui.EndChild();
                         DataEditingAddr = goto_addr;
                         DataEditingTakeFocus = true;
@@ -258,7 +258,7 @@ namespace ImGuiNET
 
         public unsafe void Begin(int count, float items_height = -1.0f)
         {
-            StartPosY = ImGuiNative.igGetCursorPosY();
+            StartPosY = ImGuiNative.ImGui_GetCursorPosY();
             ItemsHeight = items_height;
             ItemsCount = count;
             StepNo = 0;
@@ -266,12 +266,12 @@ namespace ImGuiNET
             if (ItemsHeight > 0.0f)
             {
                 int dispStart, dispEnd;
-                ImGuiNative.igCalcListClipping(ItemsCount, ItemsHeight, &dispStart, &dispEnd);
+                ImGuiNative.ImGui_CalcListClipping(ItemsCount, ItemsHeight, &dispStart, &dispEnd);
                 DisplayStart = dispStart;
                 DisplayEnd = dispEnd;
                 if (DisplayStart > 0)
                     //SetCursorPosYAndSetupDummyPrevLine(StartPosY + DisplayStart * ItemsHeight, ItemsHeight); // advance cursor
-                    ImGuiNative.igSetCursorPosY(StartPosY + DisplayStart * ItemsHeight);
+                    ImGuiNative.ImGui_SetCursorPosY(StartPosY + DisplayStart * ItemsHeight);
                 StepNo = 2;
             }
         }

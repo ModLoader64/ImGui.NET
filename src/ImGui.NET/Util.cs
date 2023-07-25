@@ -35,7 +35,7 @@ namespace ImGuiNET
 
         internal static void Free(byte* ptr) => Marshal.FreeHGlobal((IntPtr)ptr);
 
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP2_1_OR_GREATER
+#if ANDROID
         internal static int CalcSizeInUtf8(ReadOnlySpan<char> s, int start, int length)
 #else
         internal static int CalcSizeInUtf8(string s, int start, int length)
@@ -52,7 +52,7 @@ namespace ImGuiNET
             }
         }
 
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP2_1_OR_GREATER
+#if ANDROID
         internal static int GetUtf8(ReadOnlySpan<char> s, byte* utf8Bytes, int utf8ByteCount)
         {
             if (s.IsEmpty)
@@ -75,7 +75,7 @@ namespace ImGuiNET
             }
         }
 
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP2_1_OR_GREATER
+#if ANDROID
         internal static int GetUtf8(ReadOnlySpan<char> s, int start, int length, byte* utf8Bytes, int utf8ByteCount)
 #else
         internal static int GetUtf8(string s, int start, int length, byte* utf8Bytes, int utf8ByteCount)

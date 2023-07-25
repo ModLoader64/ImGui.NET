@@ -40,7 +40,7 @@ namespace ImGuiNET
         {
             ImGuiNative.ImGuiPayload_destroy((ImGuiPayload*)(NativePtr));
         }
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP2_1_OR_GREATER
+#if ANDROID
         public bool IsDataType(ReadOnlySpan<char> type)
 #else
         public bool IsDataType(string type)

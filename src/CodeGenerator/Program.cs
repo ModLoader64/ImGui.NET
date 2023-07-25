@@ -660,7 +660,7 @@ namespace CodeGenerator
             {
                 string readOnlySpanInvocationList = string.Join(", ", invocationArgs.Select(a => $"{(a.MarshalledType == "string" ? "ReadOnlySpan<char>" : a.MarshalledType)} {a.CorrectedIdentifier}"));
                 writer.WriteRaw($$"""
-                    #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP2_1_OR_GREATER
+                    #if ANDROID
                             public {{staticPortion}}{{overrideRet ?? safeRet}} {{friendlyName}}({{readOnlySpanInvocationList}})
                     #else
                             public {{staticPortion}}{{overrideRet ?? safeRet}} {{friendlyName}}({{invocationList}})

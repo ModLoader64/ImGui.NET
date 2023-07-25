@@ -19395,7 +19395,7 @@
   ],
   "igFocusTopMostWindowUnderOne": [
     {
-      "args": "(ImGuiWindow* under_this_window,ImGuiWindow* ignore_window,ImGuiViewport* filter_viewport,ImGuiFocusRequestFlags flags)",
+      "args": "(ImGuiWindow* under_this_window,ImGuiWindow* ImGui_nore_window,ImGuiViewport* filter_viewport,ImGuiFocusRequestFlags flags)",
       "argsT": [
         {
           "name": "under_this_window",
@@ -19414,7 +19414,7 @@
           "type": "ImGuiFocusRequestFlags"
         }
       ],
-      "argsoriginal": "(ImGuiWindow* under_this_window,ImGuiWindow* ignore_window,ImGuiViewport* filter_viewport,ImGuiFocusRequestFlags flags)",
+      "argsoriginal": "(ImGuiWindow* under_this_window,ImGuiWindow* ImGui_nore_window,ImGuiViewport* filter_viewport,ImGuiFocusRequestFlags flags)",
       "call_args": "(under_this_window,ignore_window,filter_viewport,flags)",
       "cimguiname": "igFocusTopMostWindowUnderOne",
       "defaults": {},
