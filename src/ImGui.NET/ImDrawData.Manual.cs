@@ -1,4 +1,4 @@
-﻿namespace ImGuiNET
+namespace ImGuiNET
 {
     public unsafe partial struct ImDrawDataPtr
     {
